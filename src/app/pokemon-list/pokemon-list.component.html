@@ -1,0 +1,49 @@
+<div class="container">
+  <h1 class="mb-5 mt-4">Pokemon List</h1>
+
+  <!-- <input
+    #input
+    (keyup.enter)="selectPokemon(input.value)"
+    class="form-control"
+    type="number"
+    placeholder="search by pokemon number"
+  /><br />
+  <p *ngIf="pokemonSelected">
+    vous avez selectionné : {{ pokemonSelected.name }}
+  </p>
+  <p *ngIf="!pokemonSelected">pokemon non trouvé</p>
+  <br /> -->
+  <div class="row">
+    <div class="col-sm-3" *ngFor="let pokemon of PokemonList">
+      <div class="card mb-3" pkmnBorderCard>
+        <div style="display: flex" class="card-body">
+          <div class="row">
+            <img
+              src="{{ pokemon.picture }}"
+              class="col-sm-6 img-fluid"
+              alt="img"
+            />
+            <div class="col-sm-6">
+              <h5 class="text-success mt-5">
+                {{ pokemon.name }}
+              </h5>
+              <small
+                *ngFor="let type of pokemon.types"
+                class="{{ type | pokemonTypeColor }}"
+                >{{ type }}</small
+              ><br />
+              <small>{{ pokemon.created | date }}</small
+              ><br /><br /><br />
+              <button
+                (click)="selectPokemon(pokemon.id.toString())"
+                class="btn btn-outline-success"
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
